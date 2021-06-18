@@ -3,6 +3,7 @@ import classes from "./Auth.module.css";
 import Button from "../../components/UI/Button/Button";
 import Input from "../../components/UI/Input/Input";
 import axios from "axios";
+import apiKey from "../../axios/apiKey";
 
 function validateEmail(email) {
   const re =
@@ -42,7 +43,7 @@ export default class Auth extends Component {
     };
     try {
       const response = await axios.post(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD08sICv1FlaSWaO57UbS45GZ_Z7uafN1M",
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`,
         authData
       );
       console.log(response.data);
@@ -59,7 +60,7 @@ export default class Auth extends Component {
     };
     try {
       const response = await axios.post(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD08sICv1FlaSWaO57UbS45GZ_Z7uafN1M",
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`,
         authData
       );
       console.log(response.data);
