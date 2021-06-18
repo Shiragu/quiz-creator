@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import classes from "./Auth.module.css";
 import Button from "../../components/UI/Button/Button";
 import Input from "../../components/UI/Input/Input";
+import axios from "axios";
 
 function validateEmail(email) {
   const re =
@@ -33,9 +34,39 @@ export default class Auth extends Component {
     },
   };
 
-  loginHandler = () => {};
+  loginHandler = async () => {
+    const authData = {
+      email: this.state.formControls.email.value,
+      password: this.state.formControls.password.value,
+      returnSecureToken: true,
+    };
+    try {
+      const response = await axios.post(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD08sICv1FlaSWaO57UbS45GZ_Z7uafN1M",
+        authData
+      );
+      console.log(response.data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
-  registerHandler = () => {};
+  registerHandler = async () => {
+    const authData = {
+      email: this.state.formControls.email.value,
+      password: this.state.formControls.password.value,
+      returnSecureToken: true,
+    };
+    try {
+      const response = await axios.post(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD08sICv1FlaSWaO57UbS45GZ_Z7uafN1M",
+        authData
+      );
+      console.log(response.data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   submitHandler = (event) => {
     event.preventDefault();
