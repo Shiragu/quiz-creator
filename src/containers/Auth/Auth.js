@@ -3,7 +3,7 @@ import classes from "./Auth.module.css";
 import Button from "../../components/UI/Button/Button";
 import Input from "../../components/UI/Input/Input";
 import axios from "axios";
-import apiKey from "../../axios/apiKey";
+import { apiKey } from "../../axios/apiKey";
 
 function validateEmail(email) {
   const re =
